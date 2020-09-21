@@ -2,18 +2,22 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<title>Add new Student</title>
+		<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
 	</head>
 	
 	<body>
-	 	<div align="center">
+	 	<div align="center"  class="container">
+	 	<div class="form-group col-lg-5">
+	 	<h2>New Student</h2>
 	 		<br>
 	 		<form th:action="@{/saveStudent}" th:object="${student}" method="POST">
-	 			<input type="text" th:field="*{firstName}" placeholder="First name" /><br>
-	 			<input type="text" th:field="*{lastName}" placeholder="last name" /><br>
-	 			<input type="text" th:field="*{studentGpa}" placeholder="Student GPA" /><br>
-	 			<input type="text" th:field="*{studentStatus}" placeholder="Studennt status" /><br>
-	 			<input type="submit"/>
+	 			<input type="text" th:field="*{firstName}"  class="form-control" placeholder="First name" /><br>
+	 			<input type="text" th:field="*{lastName}"  class="form-control" placeholder="last name" /><br>
+	 			<input type="text" th:field="*{studentGpa}"  class="form-control" placeholder="Student GPA" /><br>
+	 			<input type="text" th:field="*{studentStatus}"  class="form-control" placeholder="Studennt status" /><br>
+	 			<input type="submit" class="btn btn-primary"/>
 	 		</form>
+	 		</div>
 	 	</div>
 	</body>
 </html>
