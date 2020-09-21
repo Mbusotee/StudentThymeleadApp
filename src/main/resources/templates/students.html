@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Students</title>
+	</head>
+	
+	<body>
+	<h2>Search for students</h2>
+    <form th:object="${student}" th:action="@{/students}" method="get">
+        <input type="text" name="search" id="search" th:value="${search}"/>
+        <input type="submit" value="Search"/>
+       <div>
+		<h1>Students List</h1>
+		<a th:href="@{/newStudentForm}">Add new Student</a>
+		<br><br>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>Student ID</th>
+					<th>First name</th>
+					<th>Last name</th>
+					<th>Date created</th>
+					<th>Student GPA</th>
+					<th>Student status</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="student : ${studentList}">
+					<td th:text="${student.id}">Student id</td>
+					<td th:text="${student.firstName}">Student id</td>
+					<td th:text="${student.lastName}">Student id</td>
+					<td th:text="${student.dateCreated}">Student id</td>
+					<td th:text="${student.studentGpa}">Student id</td>
+					<td th:text="${student.studentStatus}">Student id</td>
+					<td><a th:href="@{/updateStudentForm/{id}(id=${student.id})}">edit</a>
+					     |    <a th:href="@{/deleteStudent/{id}(id=${student.id})}">delete</a></td>
+					
+			</tbody>
+			
+		</table>
+	</div>
+    </form>
+	
+		
+	</body>
+</html>
