@@ -5,6 +5,7 @@ package co.sz.swazibank.studentThymeleafApp;
 
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +13,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.CreationTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,6 +29,7 @@ import lombok.NoArgsConstructor;
 @Table(name="student")
 public class Student {
 	
+   
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -41,7 +47,9 @@ public class Student {
 	
 	
 	@Column(name="date_created")
-	private Date dateCreated;
+	@CreationTimestamp
+	@JsonFormat(pattern = "yyyy-MM-dd ")
+    private LocalDateTime dateCreated;
 	
 	@Column(name="student_gpa")
 	private double studentGpa;
@@ -49,7 +57,7 @@ public class Student {
 	public Student() {
 		
 	}
-	public Student(String lastName, String firstName, Boolean studentStatus, Date dateCreated, double studentGpa) {
+	public Student(String lastName, String firstName, Boolean studentStatus, LocalDateTime dateCreated, double studentGpa) {
 		this.lastName = lastName;
 		this.firstName = firstName;
 		this.studentStatus = studentStatus;
@@ -98,12 +106,12 @@ public class Student {
 	}
 
 
-	public Date getDateCreated() {
+	public LocalDateTime getDateCreated() {
 		return dateCreated;
 	}
 
 
-	public void setDateCreated(Date dateCreated) {
+	public void setDateCreated(LocalDateTime dateCreated) {
 		this.dateCreated = dateCreated;
 	}
 
